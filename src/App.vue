@@ -26,7 +26,7 @@ export default {
     return{
       films: [],
       foundedFilms: [],
-      apiUrl: '',
+      apiUrl: ' ',
       searchBarText: '',
     }
   },
@@ -36,6 +36,9 @@ export default {
       .then((result) => {
         this.films = result.data.results;
         console.log(this.films)
+      })
+      .catch((error) => {
+        console.log(error)
       })
     },
     getQueryValue(needle){
@@ -57,5 +60,8 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+body{
+  text-align: center;
 }
 </style>
