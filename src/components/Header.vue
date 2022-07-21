@@ -1,12 +1,18 @@
 <template>
   <div>
     <h1>header</h1>
+    <Searchbar />
   </div>
 </template>
 
 <script>
-export default {
 
+import Searchbar from './SearchBar.vue';
+
+export default {
+    components:{
+        Searchbar,
+    }
 }
 </script>
 
