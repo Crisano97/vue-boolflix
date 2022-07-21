@@ -2,12 +2,9 @@
   <div id="app">
     <Header @search="getQueryValue"/>
     <Main 
-    v-for="film in films" :key="film.id"
-    :title="film.title"
-    :originalTitle="film.original_title"
-    :originalLanguage="film.original_language"
-    :vote="film.vote_average"
-    />
+    :films="films"
+    :tvSeries="tvSeries"
+     />
   </div>
 </template>
 
@@ -56,15 +53,11 @@ export default {
     getQueryValue(needle){
             this.searchBarText = needle;
             this.apiMoviesUrl = `${'https://api.themoviedb.org/3/search/movie/?api_key=1008b99ff60c44ee5c7f8f18158c204c'}&query=${this.searchBarText}`
-            this.apiTvSeriesUrl = `${'https://api.themoviedb.org/3/search/movie/?api_key=1008b99ff60c44ee5c7f8f18158c204c'}&query=${this.searchBarText}`
+            this.apiTvSeriesUrl = `${'https://api.themoviedb.org/3/search/tv/?api_key=1008b99ff60c44ee5c7f8f18158c204c'}&query=${this.searchBarText}`
             this.getFilms();
             this.getTvSeries();
         },
   },
-
-  created(){
-    this.getQueryValue();
-  }
 
 }
 </script>
@@ -79,3 +72,4 @@ body{
   text-align: center;
 }
 </style>
+

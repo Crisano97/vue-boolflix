@@ -1,41 +1,57 @@
 <template>
-
-    <ul>
-        <li>Title : {{ title }}</li>
-        <li>Original Title : {{ originalTitle }}</li>
-        <li>
-            <lang-flag :iso= originalLanguage />
-        </li>
-        <li>Vote : {{ vote }}</li>
-
-    </ul>
-  
+  <div>
+    <div>
+        <h2>film</h2>
+        <FilmList 
+        v-for="film in films" :key="film.id"
+        :film="film"
+        />
+    </div>
+    <div>
+        <h2>serietv</h2>
+        <TvSeriesList 
+        v-for="tvSerie in tvSeries" :key="tvSerie.id"
+        :tvSerie="tvSerie"
+        />
+    </div>
+  </div>
 </template>
 
 <script>
-import LangFlag from 'vue-lang-code-flags'
+import FilmList from './FilmList.vue';
+import TvSeriesList from './TvSeriesList.vue';
 
 export default {
     components: {
-        LangFlag,
+        FilmList,
+        TvSeriesList,
     },
-    props: {
-        'title': String,
-        'originalTitle': String,
-        'originalLanguage': String,
-        'vote': [String, Number],
+    // props: {
+    //     'title': String,
+    //     'originalTitle': String,
+    //     'originalLanguage': String,
+    //     'vote': [String, Number],
+    // }
+    props:{
+        'films' : {
+            required: true,
+            type: Array
+        },
+        'tvSeries' : {
+            required: true,
+            type: Array
+        }
     }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
     main{
-        // height: 97vh;
         width: 100%;
         background-color: antiquewhite;
     }
     ul{
         border: 1px solid black;
-        margin: 2rem 15rem;
+        margin: 2rem;
     }
 </style>
