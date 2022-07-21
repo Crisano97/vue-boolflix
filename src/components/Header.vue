@@ -1,27 +1,22 @@
 <template>
   <div>
-    <Searchbar @search="getSearchText"/>
+    <input v-model="inputText" type="text" placeholder="Search Films">
+    <button  type="submit" @click.prevent="$emit('search', inputText)">search</button>
   </div>
 </template>
 
 <script>
 
-import Searchbar from './SearchBar.vue';
-
 export default {
-    components:{
-        Searchbar,
-    },
+    
     data: function(){
         return{
-            SearchbarText: '',
+            inputText: '',
         }
     },
     methods:{
-        getSearchText(needle){
-            this.SearchbarText = needle;
-            console.log(this.SearchbarText)
-        }
+        
+        
     },
     
 }
