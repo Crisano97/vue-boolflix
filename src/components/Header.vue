@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>header</h1>
-    <Searchbar />
+    <Searchbar @search="getSearchText"/>
   </div>
 </template>
 
@@ -12,7 +11,19 @@ import Searchbar from './SearchBar.vue';
 export default {
     components:{
         Searchbar,
-    }
+    },
+    data: function(){
+        return{
+            SearchbarText: '',
+        }
+    },
+    methods:{
+        getSearchText(needle){
+            this.SearchbarText = needle;
+            console.log(this.SearchbarText)
+        }
+    },
+    
 }
 </script>
 
