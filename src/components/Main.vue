@@ -1,14 +1,23 @@
 <template>
-  <main>
+
     <ul>
-        <li></li>
+        <li>Title : {{ title }}</li>
+        <li>Original Title : {{ originalTitle }}</li>
+        <li>Language : {{ originalLanguage }}</li>
+        <li>Vote : {{ vote }}</li>
+
     </ul>
-  </main>
+  
 </template>
 
 <script>
 export default {
-
+    props: {
+        'title': String,
+        'originalTitle': String,
+        'originalLanguage': String,
+        'vote': [String, Number],
+    }
 }
 </script>
 
