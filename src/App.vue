@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header @search="getSearchText"/>
+    <Header @search="getQueryValue"/>
     <Main />
   </div>
 </template>
@@ -20,28 +20,34 @@ export default {
     return{
       films: [],
       foundedFilms: [],
-      apiUrl: 'https://api.themoviedb.org/3/search/movie/?api_key=1008b99ff60c44ee5c7f8f18158c204c',
+      apiUrl: '',
       searchBarText: '',
     }
   },
   methods:{
     getFilms(){
-      axios.get(`${this.apiUrl}&query=${this.searchBarText}`)
+      axios.get(this.apiUrl)
       .then((result) => {
         this.films = result.data.results;
-        console.log(result.data.results)
+        console.log(this.films)
+        // console.log(result.data.results)
 
       })
     },
-    getSearchText(needle){
+    getQueryValue(needle){
             this.searchBarText = needle;
-            console.log(this.searchBarText)
+            this.apiUrl = `${'https://api.themoviedb.org/3/search/movie/?api_key=1008b99ff60c44ee5c7f8f18158c204c'}&query=${this.searchBarText}`
+            // console.log(this.apiUrl)
+            // console.log(this.searchBarText)
+            this.getFilms()
+            // console.log(this.films)
         },
   },
-  
+
   created(){
-    this.getFilms();
+    this.getQueryValue();
   }
+
 }
 </script>
 
