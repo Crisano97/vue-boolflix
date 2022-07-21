@@ -25,14 +25,16 @@ export default {
   data:function(){
     return{
       films: [],
+      tvSeries: [],
       foundedFilms: [],
-      apiUrl: ' ',
+      apiMoviesUrl: ' ',
+      apiTvSeriesUrl:'',
       searchBarText: '',
     }
   },
   methods:{
     getFilms(){
-      axios.get(this.apiUrl)
+      axios.get(this.apiMoviesUrl)
       .then((result) => {
         this.films = result.data.results;
         console.log(this.films)
@@ -41,10 +43,22 @@ export default {
         console.log(error)
       })
     },
+    getTvSeries(){
+      axios.get(this.apiTvSeriesUrl)
+      .then((result) => {
+        this.tvSeries = result.data.results;
+        console.log(this.tvSeries)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    },
     getQueryValue(needle){
             this.searchBarText = needle;
-            this.apiUrl = `${'https://api.themoviedb.org/3/search/movie/?api_key=1008b99ff60c44ee5c7f8f18158c204c'}&query=${this.searchBarText}`
-            this.getFilms()
+            this.apiMoviesUrl = `${'https://api.themoviedb.org/3/search/movie/?api_key=1008b99ff60c44ee5c7f8f18158c204c'}&query=${this.searchBarText}`
+            this.apiTvSeriesUrl = `${'https://api.themoviedb.org/3/search/movie/?api_key=1008b99ff60c44ee5c7f8f18158c204c'}&query=${this.searchBarText}`
+            this.getFilms();
+            this.getTvSeries();
         },
   },
 

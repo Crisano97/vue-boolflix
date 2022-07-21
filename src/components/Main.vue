@@ -3,7 +3,9 @@
     <ul>
         <li>Title : {{ title }}</li>
         <li>Original Title : {{ originalTitle }}</li>
-        <lang-flag :iso= originalLanguage />
+        <li>
+            <lang-flag :iso= originalLanguage />
+        </li>
         <li>Vote : {{ vote }}</li>
 
     </ul>
