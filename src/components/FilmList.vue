@@ -7,6 +7,7 @@
             <li>
                 <lang-flag :iso= film.original_language />
             </li>
+
             <li>
                 Vote :
                 <i class="fa-solid fa-star"

@@ -36,6 +36,8 @@ export default {
         numberFromDecimalToInteger(number){
             let integerNumber; 
             integerNumber = Math.round(number / 2);
+
+            console.warn(integerNumber)
             return integerNumber
         }
     },
