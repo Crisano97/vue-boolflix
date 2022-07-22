@@ -7,7 +7,7 @@
             <li>
                 <lang-flag :iso= tvSerie.original_language />
             </li>
-            <li>Vote : {{ tvSerie.vote_average }}</li>
+            <li>Vote : {{ numberFromDecimalToInteger(tvSerie.vote_average) }}</li>
 
         </ul>
     </div>
@@ -27,7 +27,15 @@ export default {
     },
     props:[
         'tvSerie'
-    ]
+    ],
+    methods:{
+        numberFromDecimalToInteger(number){
+            let integerNumber; 
+            integerNumber = Math.round(number / 2) + 1;
+            console.warn(integerNumber)
+            return integerNumber
+        }
+    },
 }
 </script>
 
