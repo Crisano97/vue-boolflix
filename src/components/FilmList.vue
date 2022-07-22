@@ -4,8 +4,11 @@
         <ul class="film">
             <li>Title : {{ film.title }}</li>
             <li>Original Title : {{ film.original_title }}</li>
-            <li>
+            <li v-if="languages.includes(film.original_language)">
                 <lang-flag :iso= film.original_language />
+            </li>
+            <li v-else>
+                Language : {{ film.original_language }}
             </li>
 
             <li>
@@ -24,6 +27,7 @@ import LangFlag from 'vue-lang-code-flags';
 export default {
     data:function(){
         return{
+            languages: ['it', 'en', 'fr', 'de', 'zh', 'es', 'pt', 'ru'],
         }
     },
     components: {
