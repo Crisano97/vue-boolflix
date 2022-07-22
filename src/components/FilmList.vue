@@ -8,7 +8,7 @@
                 <lang-flag :iso= film.original_language />
             </li>
             <li>Vote : {{ numberFromDecimalToInteger(film.vote_average) }}</li>
-
+            <li><font-awesome-ico icon="fa-solid fa-star" /></li>
         </ul>
     </div>
 </template>
@@ -31,7 +31,7 @@ export default {
     methods:{
         numberFromDecimalToInteger(number){
             let integerNumber; 
-            integerNumber = Math.round(number / 2) + 1;
+            integerNumber = Math.ceil(number / 2);
             console.warn(integerNumber)
             return integerNumber
         }
