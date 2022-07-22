@@ -7,8 +7,12 @@
             <li>
                 <lang-flag :iso= tvSerie.original_language />
             </li>
-            <li>Vote : {{ numberFromDecimalToInteger(tvSerie.vote_average) }}</li>
-
+            <li>
+                Vote : 
+                <i class="fa-solid fa-star"
+                    v-for="(vote, index) in numberFromDecimalToInteger(tvSerie.vote_average)" :key="index"
+                ></i>
+            </li>
         </ul>
     </div>
 </template>
@@ -32,7 +36,6 @@ export default {
         numberFromDecimalToInteger(number){
             let integerNumber; 
             integerNumber = Math.round(number / 2);
-            console.warn(integerNumber)
             return integerNumber
         }
     },

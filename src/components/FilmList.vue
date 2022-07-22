@@ -7,8 +7,12 @@
             <li>
                 <lang-flag :iso= film.original_language />
             </li>
-            <li>Vote : {{ numberFromDecimalToInteger(film.vote_average) }}</li>
-            <li><font-awesome-ico icon="fa-solid fa-star" /></li>
+            <li>
+                Vote :
+                <i class="fa-solid fa-star"
+                    v-for="(vote, index) in numberFromDecimalToInteger(film.vote_average)" :key="index"
+                ></i>
+            </li>
         </ul>
     </div>
 </template>
@@ -17,9 +21,8 @@
 import LangFlag from 'vue-lang-code-flags';
 
 export default {
-    data: function(){
+    data:function(){
         return{
-            
         }
     },
     components: {
@@ -30,11 +33,11 @@ export default {
     ],
     methods:{
         numberFromDecimalToInteger(number){
-            let integerNumber; 
+            let integerNumber;
             integerNumber = Math.ceil(number / 2);
-            console.warn(integerNumber)
+            console.log(integerNumber)
             return integerNumber
-        }
+        },
     },
 }
 </script>
