@@ -10,8 +10,7 @@
             <li>
                 Vote : 
                 <i class="fa-solid fa-star"
-                    v-for="(vote, index) in numberFromDecimalToInteger(tvSerie.vote_average)" :key="index"
-                ></i>
+                    v-for="(vote, index) in numberFromDecimalToInteger(tvSerie.vote_average)" :key="index"></i>
             </li>
         </ul>
     </div>
