@@ -26,12 +26,6 @@ export default {
         FilmList,
         TvSeriesList,
     },
-    // props: {
-    //     'title': String,
-    //     'originalTitle': String,
-    //     'originalLanguage': String,
-    //     'vote': [String, Number],
-    // }
     props:{
         'films' : {
             required: true,
