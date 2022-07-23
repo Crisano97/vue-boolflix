@@ -19,6 +19,7 @@
                         v-for="(vote, index) in numberFromDecimalToInteger(film.vote_average)" :key="index"
                     ></i>
                 </li>
+                <li> <b>Overview :</b> {{ film.overview }}</li>
             </ul>
         </div>
     </div>

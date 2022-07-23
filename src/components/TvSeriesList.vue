@@ -17,6 +17,7 @@
                         v-for="(vote, index) in numberFromDecimalToInteger(tvSerie.vote_average)" :key="index"
                     ></i>
                 </li>
+                <li> <b>Overview :</b> {{ tvSerie.overview }}</li>
             </ul>
         </div>
     </div>
