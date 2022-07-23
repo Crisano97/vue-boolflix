@@ -1,20 +1,22 @@
 <template>
-  <div>
-    <div>
+  <main>
+    <div class="content-container">
         <h2>film</h2>
-        <FilmList 
-        v-for="film in films" :key="film.id"
-        :film="film"
-        />
-    </div>
-    <div>
+        <div class="cards-container">
+            <FilmList 
+            v-for="film in films" :key="film.id"
+            :film="film"
+            />
+        </div>
         <h2>serietv</h2>
-        <TvSeriesList 
-        v-for="tvSerie in tvSeries" :key="tvSerie.id"
-        :tvSerie="tvSerie"
-        />
+        <div class="cards-container">
+            <TvSeriesList 
+            v-for="tvSerie in tvSeries" :key="tvSerie.id"
+            :tvSerie="tvSerie"
+            />
+        </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -39,13 +41,26 @@ export default {
 }
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
     main{
         width: 100%;
-        background-color: antiquewhite;
+        // min-height: 85.5vh;
+        padding: 2rem;
+
+        div.content-container{
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        h2{
+            color: red;
+            text-transform: uppercase;
+        }
+
+        div.cards-container{
+            display: flex;
+            flex-wrap: wrap;
+        }
     }
-    ul{
-        border: 1px solid black;
-        margin: 2rem;
-    }
+    
 </style>

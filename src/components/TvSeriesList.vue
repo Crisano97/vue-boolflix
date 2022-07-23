@@ -1,19 +1,24 @@
 <template>
-    <div>
+    <div class="tvserie-card-container">
         <img :src="'https://image.tmdb.org/t/p/w342' + tvSerie.poster_path" :alt="tvSerie.name">
-        <ul>
-            <li>Title : {{ tvSerie.name }}</li>
-            <li>Original Title : {{ tvSerie.original_name }}</li>
-            <li>
-                <lang-flag :iso= tvSerie.original_language />
-            </li>
-            <li>
-                Vote : 
-                <i class="fa-solid fa-star"
-                    v-for="(vote, index) in numberFromDecimalToInteger(tvSerie.vote_average)" :key="index"
-                ></i>
-            </li>
-        </ul>
+        <div class="info-container">
+            <ul class="tvserie">
+                <li><b>Title :</b> {{ tvSerie.name }}</li>
+                <li><b>Original Title :</b> {{ tvSerie.original_name }}</li>
+                <li v-if="languages.includes(tvSerie.original_language)">
+                    <b>Language :</b> <lang-flag :iso= tvSerie.original_language />
+                </li>
+                <li v-else>
+                    <b>Language :</b> {{ tvSerie.original_language }}
+                </li>
+                <li>
+                    <b>Vote :</b> 
+                    <i class="fa-solid fa-star"
+                        v-for="(vote, index) in numberFromDecimalToInteger(tvSerie.vote_average)" :key="index"
+                    ></i>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -21,9 +26,9 @@
 import LangFlag from 'vue-lang-code-flags';
 
 export default {
-    data: function(){
+    data:function(){
         return{
-            posterUrl: 'https://image.tmdb.org/t/p/w342',
+            languages: ['it', 'en', 'fr', 'de', 'zh', 'es', 'pt', 'ru', 'ja', 'ko'],
         }
     },
     components: {
@@ -43,6 +48,49 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
+    div.tvserie-card-container{
+        margin: 1rem .2rem;
+        height: 30.4rem;
+        width: 20.2rem;
+        position: relative;
+        line-height: 30rem;
+        background-color: gray;
+        color: white;
+        border: 3px solid white;
+        &:hover div.info-container{
+            display: block;
+            line-height: initial;
+        }
+        img{
+            height: 100%;
+            width: 100%;
+        }
+
+        div.info-container{
+            position: absolute;
+            top: 0;
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            border: 3px solid white;
+            padding: 1rem;
+        }
+    }
+    ul.tvserie{
+        color: white;
+        list-style: none;
+        margin-top: 2rem;
+        text-align: start;
+        
+        li{
+            margin-bottom: .2rem;
+        }
+
+        li i{
+            color: yellow;
+        }
+    }
 </style>

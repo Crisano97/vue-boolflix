@@ -2,7 +2,7 @@
   <header>
     <h1>Boolflix</h1>
     <div>
-      <input class="search-bar" v-model="inputText" type="text" placeholder="Search Films" @keyup.enter="$emit('search', inputText)">
+      <input class="search-bar" v-model="inputText" type="text" placeholder="Search Films" @keyup.enter="$emit('search', inputText)" >
       <!-- <button  type="submit" @click.prevent="$emit('search', inputText)">search</button> -->
     </div>
   </header>

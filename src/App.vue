@@ -70,6 +70,7 @@ export default {
 }
 body{
   text-align: center;
+  background-color: rgb(48, 48, 48);
 }
 </style>
 
