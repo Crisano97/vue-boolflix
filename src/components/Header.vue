@@ -3,7 +3,7 @@
     <h1>Boolflix</h1>
     <div>
       <input class="search-bar" v-model="inputText" type="text" placeholder="Search Films" @keyup.enter="$emit('search', inputText)" >
-      <!-- <button  type="submit" @click.prevent="$emit('search', inputText)">search</button> -->
+      <button  type="submit" @click.prevent="$emit('search', inputText)">search</button>
     </div>
   </header>
 </template>
@@ -43,7 +43,11 @@ export default {
       }
 
       button{
-
+        padding: .4rem;
+        color: white;
+        background-color: red;
+        border: 0;
+        text-transform: uppercase;
       }
 
     }

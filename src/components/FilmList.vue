@@ -1,7 +1,6 @@
 <template>
     <div class="film-card-container">
         <img :src="'https://image.tmdb.org/t/p/w342' + film.poster_path" :alt="film.title">
-        
         <div class="info-container">
             <ul class="film">
                 <li><b>Title :</b> {{ film.title }}</li>
