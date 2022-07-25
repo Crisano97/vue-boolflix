@@ -7,15 +7,15 @@
             v-for="film in films" :key="film.id"
             :film="film"
             />
-            <h1 v-if="films.length === 0">La tua ricerca non ha prodotto risultati</h1>
+            <h1 v-if="films.length === 0">no films found</h1>
         </div>
-        <h2>serie tv :</h2>
+        <h2>tv serie :</h2>
         <div class="cards-container">
             <TvSeriesList 
             v-for="tvSerie in tvSeries" :key="tvSerie.id"
             :tvSerie="tvSerie"
             />
-            <h1 v-if="tvSeries.length === 0">La tua ricerca non ha prodotto risultati</h1>
+            <h1 v-if="tvSeries.length === 0">no tv series found</h1>
         </div>
     </div>
   </main>

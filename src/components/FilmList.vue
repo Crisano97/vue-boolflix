@@ -14,8 +14,9 @@
 
                 <li>
                     <b>Vote :</b>
-                    <i class="fa-solid fa-star"
-                        v-for="(vote, index) in numberFromDecimalToInteger(film.vote_average)" :key="index"
+                    <i class="fa-star"
+                    :class="n <= numberFromDecimalToInteger(film.vote_average) ? 'fa-solid' : 'fa-regular'"
+                        v-for="n in 5" :key="n"
                     ></i>
                 </li>
                 <li> <b>Overview :</b> {{ film.overview }}</li>
