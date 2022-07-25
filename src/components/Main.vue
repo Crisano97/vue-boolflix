@@ -46,7 +46,7 @@ export default {
 <style lang="scss" scoped>
     main{
         width: 100%;
-        padding: 2rem;
+        padding: 3rem 2rem;
 
         div.content-container{
             width: 90%;
@@ -61,6 +61,7 @@ export default {
         div.cards-container{
             display: flex;
             flex-wrap: wrap;
+            margin: 2rem 0;
         }
 
         h1{

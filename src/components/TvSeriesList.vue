@@ -4,7 +4,7 @@
         <div class="info-container">
             <ul class="tvserie">
                 <li><b>Title :</b> {{ tvSerie.name }}</li>
-                <li><b>Original Title :</b> {{ tvSerie.original_name }}</li>
+                <li v-if="tvSerie.name != tvSerie.original_name"><b>Original Title :</b> {{ tvSerie.original_name }}</li>
                 <li v-if="languages.includes(tvSerie.original_language)">
                     <b>Language :</b> <lang-flag :iso= tvSerie.original_language />
                 </li>
@@ -27,7 +27,7 @@
         <div class="info-container">
             <ul class="tvserie">
                 <li><b>Title :</b> {{ tvSerie.name }}</li>
-                <li><b>Original Title :</b> {{ tvSerie.original_name }}</li>
+                <li v-if="tvSerie.name != tvSerie.original_name"><b>Original Title :</b> {{ tvSerie.original_name }}</li>
                 <li v-if="languages.includes(tvSerie.original_language)">
                     <b>Language :</b> <lang-flag :iso= tvSerie.original_language />
                 </li>
@@ -102,6 +102,7 @@ export default {
             background-color: black;
             border: 3px solid white;
             padding: 1rem;
+            overflow: auto;
         }
     }
     ul.tvserie{
@@ -112,6 +113,7 @@ export default {
         
         li{
             margin-bottom: .2rem;
+            font-size: 1.2rem;
         }
 
         li i{

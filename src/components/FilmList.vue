@@ -4,7 +4,7 @@
         <div class="info-container">
             <ul class="film">
                 <li><b>Title :</b> {{ film.title }}</li>
-                <li><b>Original Title :</b> {{ film.original_title }}</li>
+                <li v-if="film.title != film.original_title"><b>Original Title :</b> {{ film.original_title }}</li>
                 <li v-if="languages.includes(film.original_language)">
                     <b>Language :</b> <lang-flag :iso= film.original_language />
                 </li>
@@ -23,12 +23,12 @@
             </ul>
         </div>
     </div>
-    <div class="film-card-container" v-else>
+    <div class="film-card-container no-poster-style" v-else>
         <h3>{{ film.title }}</h3>
         <div class="info-container">
             <ul class="film">
                 <li><b>Title :</b> {{ film.title }}</li>
-                <li><b>Original Title :</b> {{ film.original_title }}</li>
+                <li v-if="film.title != film.original_title"><b>Original Title :</b> {{ film.original_title }}</li>
                 <li v-if="languages.includes(film.original_language)">
                     <b>Language :</b> <lang-flag :iso= film.original_language />
                 </li>
@@ -104,6 +104,7 @@ export default {
             background-color: black;
             border: 3px solid white;
             padding: 1rem;
+            overflow: auto;
         }
     }
     ul.film{
@@ -114,6 +115,7 @@ export default {
         
         li{
             margin-bottom: .2rem;
+            font-size: 1.2rem;
         }
         
         li i{
