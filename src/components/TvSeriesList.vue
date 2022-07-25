@@ -1,6 +1,29 @@
 <template>
-    <div class="tvserie-card-container">
+    <div class="tvserie-card-container"  v-if="tvSerie.poster_path != null">
         <img :src="'https://image.tmdb.org/t/p/w342' + tvSerie.poster_path" :alt="tvSerie.name">
+        <div class="info-container">
+            <ul class="tvserie">
+                <li><b>Title :</b> {{ tvSerie.name }}</li>
+                <li><b>Original Title :</b> {{ tvSerie.original_name }}</li>
+                <li v-if="languages.includes(tvSerie.original_language)">
+                    <b>Language :</b> <lang-flag :iso= tvSerie.original_language />
+                </li>
+                <li v-else>
+                    <b>Language :</b> {{ tvSerie.original_language }}
+                </li>
+                <li>
+                    <b>Vote :</b> 
+                    <i class="fa-star"
+                    :class="n <= numberFromDecimalToInteger(tvSerie.vote_average) ? 'fa-solid' : 'fa-regular'"
+                        v-for="n in 5" :key="n"
+                    ></i>
+                </li>
+                <li> <b>Overview :</b> {{ tvSerie.overview }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="tvserie-card-container" v-else>
+        <h3>{{ tvSerie.name }}</h3>
         <div class="info-container">
             <ul class="tvserie">
                 <li><b>Title :</b> {{ tvSerie.name }}</li>
@@ -58,7 +81,7 @@ export default {
         width: 20.2rem;
         position: relative;
         line-height: 30rem;
-        background-color: gray;
+        background-color: rgb(160, 39, 39);
         color: white;
         border: 3px solid white;
         &:hover div.info-container{
