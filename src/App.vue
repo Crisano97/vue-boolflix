@@ -23,25 +23,35 @@ export default {
     return{
       films: [],
       tvSeries: [],
-      foundedFilms: [],
-      apiMoviesUrl: ' ',
-      apiTvSeriesUrl:'',
+      apiMoviesUrl: 'https://api.themoviedb.org/3/search/movie',
+      apiTvSeriesUrl:'https://api.themoviedb.org/3/search/tv',
       searchBarText: '',
+      apiKey: '1008b99ff60c44ee5c7f8f18158c204c',
     }
   },
   methods:{
     getFilms(){
-      axios.get(this.apiMoviesUrl)
+      axios.get(this.apiMoviesUrl, {
+        params: {
+          api_key: this.apiKey,
+          query: this.searchBarText,
+        }
+      })
       .then((result) => {
-        this.films = result.data.results;
-        console.log(this.films)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+          this.films = result.data.results;
+          console.log(this.films)
+        })
+        .catch((error) => {
+          console.log(error)
+        })   
     },
     getTvSeries(){
-      axios.get(this.apiTvSeriesUrl)
+      axios.get(this.apiTvSeriesUrl, {
+        params: {
+          api_key: this.apiKey,
+          query: this.searchBarText,
+        }
+      })
       .then((result) => {
         this.tvSeries = result.data.results;
         console.log(this.tvSeries)
@@ -52,8 +62,6 @@ export default {
     },
     getQueryValue(needle){
             this.searchBarText = needle;
-            this.apiMoviesUrl = `${'https://api.themoviedb.org/3/search/movie/?api_key=1008b99ff60c44ee5c7f8f18158c204c'}&query=${this.searchBarText}`
-            this.apiTvSeriesUrl = `${'https://api.themoviedb.org/3/search/tv/?api_key=1008b99ff60c44ee5c7f8f18158c204c'}&query=${this.searchBarText}`
             this.getFilms();
             this.getTvSeries();
         },

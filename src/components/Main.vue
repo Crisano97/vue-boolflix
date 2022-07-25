@@ -1,12 +1,13 @@
 <template>
   <main>
-    <div class="content-container" v-if="films.length">
+    <div class="content-container" v-if="films.length || tvSeries.length">
         <h2>film :</h2>
         <div class="cards-container">
             <FilmList 
             v-for="film in films" :key="film.id"
             :film="film"
             />
+            <h1 v-if="films.length === 0">La tua ricerca non ha prodotto risultati</h1>
         </div>
         <h2>serie tv :</h2>
         <div class="cards-container">
@@ -14,9 +15,9 @@
             v-for="tvSerie in tvSeries" :key="tvSerie.id"
             :tvSerie="tvSerie"
             />
+            <h1 v-if="tvSeries.length === 0">La tua ricerca non ha prodotto risultati</h1>
         </div>
     </div>
-    <h1 v-if="films.length == 0 && tvSeries.length == 0">La tua ricerca non ha prodotto risultati</h1>
   </main>
 </template>
 
@@ -60,6 +61,12 @@ export default {
         div.cards-container{
             display: flex;
             flex-wrap: wrap;
+        }
+
+        h1{
+            margin: 2rem 0;
+            text-transform: uppercase;
+            color: white;
         }
     }
     
